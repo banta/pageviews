@@ -1,22 +1,16 @@
-require 'digest/sha2'
-
 module PageviewsController
   module ClassMethods
     def track_views(opts={})
-      before_filter { |c| c.impressionist_subapp_filter(opts[:actions], opts[:unique])}
+      before_filter { |c| c.track_views_subapp_filter(opts[:actions], opts[:unique])}
     end
   end
 
   module InstanceMethods
-    def self.included(base)
-      base.before_filter :impressionist_app_filter
-    end
-
-    def impressionist_subapp_filter(actions=nil,unique_opts=nil)
+    def track_views_subapp_filter(actions=nil,unique_opts=nil)
       unless bypass
         actions.collect!{|a|a.to_s} unless actions.blank?
         if (actions.blank? || actions.include?(action_name)) && unique?(unique_opts)
-          PageView.create(direct_create_statement)
+          Pageview.create(direct_create_statement)
         end
       end
     end
@@ -46,7 +40,7 @@ module PageviewsController
     end
 
     def unique?(unique_opts)
-      return unique_opts.blank? || !PageView.where(unique_query(unique_opts)).exists?
+      return unique_opts.blank? || !Pageview.where(unique_query(unique_opts)).exists?
     end
 
     # creates the query to check for uniqueness
