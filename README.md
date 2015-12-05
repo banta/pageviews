@@ -1,8 +1,7 @@
 # Pageviews
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pageviews`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Pageviews is a lightweight ruby gem for tracking page views for rails application.
+What about bots? They are ignored.  1200 known bots have been added to the ignore list as of
+February 1, 2011.  Impressionist uses this list: http://www.user-agents.org/allagents.xml
 
 ## Installation
 
@@ -14,26 +13,75 @@ gem 'pageviews'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
     $ gem install pageviews
 
+Generate the impressions table migration
+
+    rails g pageviews
+
+Run the migration
+
+    rake db:migrate
+
+The following fields will be generated in the migration:
+
+    t.string   "pageview_type"        # model type: Widget
+    t.integer  "pageview_id"          # model instance ID: @blog_post.id
+    t.integer  "user_id"              # automatically logs @current_user.id
+    t.string   "controller_name"      # logs the controller name
+    t.string   "action_name"          # logs the action_name
+    t.string   "view_name"            # TODO: log individual views (as well as partials and nested partials)
+    t.string   "request_hash"         # unique ID per request, in case you want to log multiple impressions and group them
+    t.string   "session_hash"         # logs the rails session
+    t.string   "ip_address"           # request.remote_ip
+    t.text     "params"               # request.params, except action name, controller name and resource id
+    t.string   "referrer"             # request.referer
+    t.datetime "created_at"           # I am not sure what this is.... Any clue?
+    t.datetime "updated_at"           # never seen this one before either....  Your guess is as good as mine?? ;-)
+
 ## Usage
 
-TODO: Write usage instructions here
 
-## Development
+1. Log all actions in a controller
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+        class BlogPostController < ApplicationController
+          track_views
+        end
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+2. Specify actions you want logged in a controller
+
+        class BlogPostController < ApplicationController
+          track_views actions: [:show,:index]
+        end
+
+3. Make use of the `:session_hash` to keep track of unique views only.
+
+        class BlogPostController < ApplicationController
+          track_views actions: [:show], unique: [:session_hash]
+        end
+
+4. Add `acts_as_pageviews` in your model.  This allows you to attach pageviews to
+   an Active Record model instance.
+
+        class BlogPost < ActiveRecord::Base
+          acts_as_pageviews
+        end
+
+5. Get unique pageviews count from a model.
+
+        @blog_post.views
+
+6. You can also specify pageviews count for specific actions.
+
+        @blog_post.views('show')
 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Banta/pageviews. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
-
 
 ## License
 
