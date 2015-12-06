@@ -1,4 +1,12 @@
 language: ruby
 rvm:
-  - 2.1.4
+- 2.1.4
 before_install: gem install bundler -v 1.10.4
+deploy:
+  provider: rubygems
+  api_key:
+    secure: fKz1sUHPs5+9pvifXBaZQaZzjZt0++6QtpTdydk3hPu0f0ZcxCQdyMKGb+tDaHTp1nXpsm+ev2XoK54M2xuCOrEcDgVlzBa1gOcxijB8J25GeoDn3s5MpMaW+fVsiLpBKe7rXCO3GFi8ke+ZL4oqvT0gxmnoGBh9fezJr6QcqwkQGWAihUcHmPpuAmkYGbVDLr3SUrOlHGp8VAYXq/PCqTNXeJm6us3EF4pR2tGBLlIhyIWjBjlhCFrit3Y/MITRt8BRY4qExSec1sAqrC8vmZSnoCizhSZMmNmbCjGAa5eGRajvRL+sMjsZn1hXxgRsA8VDrA/u0UV+BEuYhyuySCFTe3jwLRICarRoP6fYmUFQL74hiZC+V0Ncq8MUBStV19xMMwMQ7rQZlMBFoW2+BueBZy/YALk8fN0Ux6im/SRZoAiow6cyPEc7h5mwlqhQsDBrLA9gZ+TYOawWwGIbLZ9cukNxD0QCr8fyVe4FzuX4/AskHT3Qif7n/0VpdLytdwhxZwe78XypbaWdhi2n/0lrHF+oq/gbWAx6e+Y6YxEofMhUlud23tUFAYmBFcYFLzBMxhOsjp228RBd743jk+3/fgi6GLISklLEFQ5H3sRPNOMxJhuwu9SSsNJKC9LNC1UpReFWmsDfLHTEiWj6JIUVAgUa6zqriwNenCJ1cvE=
+  gem: pageviews
+  on:
+    tags: true
+    repo: Banta/pageviews
