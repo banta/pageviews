@@ -6,7 +6,11 @@ class PageviewsGenerator < Rails::Generators::Base
   source_root File.join(File.dirname(__FILE__), 'templates')
 
   def self.next_migration_number(_dirname)
-    Time.now.utc.strftime("%Y%m%d%H%M%S")
+    Time.now.utc.strftime('%Y%m%d%H%M%S')
+  end
+
+  def generate_model
+    template 'pageview.rb', 'app/models/pageview.rb'
   end
 
   def create_migration_file
