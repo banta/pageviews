@@ -13,3 +13,4 @@ class PageviewsGenerator < Rails::Generators::Base
     migration_template 'create_pageviews_table.rb', 'db/migrate/create_pageviews_table.rb'
   end
 end
+# Compare this snippet from lib/pageviews/version.rb:
