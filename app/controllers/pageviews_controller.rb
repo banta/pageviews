@@ -18,7 +18,7 @@ module PageviewsController
     private
 
     def bypass_tracking?
-      request.bot? || Pageviews::Bots.bot?(request.user_agent)
+      bot_user_agent?(request.user_agent)
     end
 
     def create_pageview_params
@@ -48,6 +48,19 @@ module PageviewsController
 
       conditions = create_pageview_params.slice(*unique_opts)
       !Pageview.exists?(conditions)
+    end
+
+    def bot_user_agent?(user_agent)
+      return false if user_agent.blank?
+      
+      bot_patterns = [
+        /bot/i,
+        /crawler/i,
+        /spider/i,
+        /\b(Baidu|Gigabot|Googlebot|libwww-perl|lwp-trivial|msnbot|SiteUptime|Slurp|WordPress|ZIBB|ZyBorg|Yandex|Jyxobot|ApacheBench|YandexBot)\b/i
+      ]
+      
+      bot_patterns.any? { |pattern| user_agent =~ pattern }
     end
   end
 end
