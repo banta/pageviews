@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pageviews/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "pageviews-ruby-3-active-record-8"
+  spec.name          = "strongmind-pageviews"
   spec.version       = Pageviews::VERSION
   spec.authors       = ['StrongMind']
   spec.email         = ['vendor@strongmind.com']
