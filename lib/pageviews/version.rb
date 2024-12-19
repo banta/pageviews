@@ -1,3 +1,3 @@
 module Pageviews
-  VERSION = '0.2.5'
+  VERSION = '8.0.0'
 end

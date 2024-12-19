@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.0] - 2024-12-19
+
+### Added
+- Added a new template for model `Pageview` to the gem.
+- Added a new generator for model `Pageview` to the gem.
+
+### Changed
+- Updated version number to `8.0.0` to match Rails release.
+- Updated gem to Rails 8 standards for compatibility.
+- Update bot identification to work with Rails 8.
+
 ## [0.2.1] - 2024-12-19
 
 ### Added
