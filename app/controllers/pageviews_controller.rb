@@ -17,7 +17,7 @@ module PageviewsController
 
     protected
 
-    # creates a statment hash that contains default values for creating an impression via an AR relation.
+    # creates a statement hash that contains default values for creating an impression via an AR relation.
     def associative_create_statement(query_params={})
       query_params.reverse_merge!(
           :controller_name => controller_name,
