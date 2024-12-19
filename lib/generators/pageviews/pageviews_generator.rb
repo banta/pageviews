@@ -5,7 +5,7 @@ class PageviewsGenerator < Rails::Generators::Base
   include Rails::Generators::Migration
   source_root File.join(File.dirname(__FILE__), 'templates')
 
-  def next_migration_number(dirname)
+  def next_migration_number
     Time.now.utc.strftime("%Y%m%d%H%M%S")
   end
 
