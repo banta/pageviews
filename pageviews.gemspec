@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pageviews/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "pageviews"
+  spec.name          = "pageviews-ruby-3-active-record-8"
   spec.version       = Pageviews::VERSION
-  spec.authors       = ['Bernard Banta']
-  spec.email         = ['banta.bernard@gmail.com']
+  spec.authors       = ['StrongMind']
+  spec.email         = ['vendor@strongmind.com']
 
   spec.summary       = 'Easy way to log Rails page views'
   spec.description   = 'Pageviews is a page views counting gem for Rails. Log views from Rails controller actions.'
-  spec.homepage      = 'http://bbanta.com'
+  spec.homepage      = 'https://github.com/StrongMind/pageviews'
   spec.license       = "MIT"
 
   spec.required_ruby_version = '>= 3.0'
