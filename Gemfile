@@ -8,5 +8,3 @@ group :development, :test do
   gem 'rspec', '~> 3.12'
   gem 'sqlite3', '~> 2.1'
 end
-
-gem 'strongmind-platform-sdk', require: 'platform_sdk'
