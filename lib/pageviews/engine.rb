@@ -4,7 +4,9 @@ require 'active_record'
 # require 'active_support'
 
 module Pageviews
-  class Engine < Rails::Engine
+  class Engine < ::Rails::Engine
+    isolate_namespace Pageviews
+
     initializer 'pageviews.controller' do
       ActiveSupport.on_load(:action_controller) do
         include PageviewsController::InstanceMethods

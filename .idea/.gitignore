@@ -1,0 +1,66 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# Ignore bundler config
+/.bundle
+
+# Ignore the Gemfile.lock for gems (libraries)
+Gemfile.lock
+
+# Ignore default log files
+/log/*
+!/log/.keep
+
+# Ignore temporary files
+/tmp/*
+!/tmp/.keep
+
+# Ignore pid files
+/tmp/pids/*
+/tmp/sockets/*
+/tmp/cache/*
+/tmp/screenshots/*
+
+# Ignore byebug history
+.byebug_history
+
+# Ignore test coverage reports
+/coverage/
+/spec/reports/
+
+# Ignore secret credentials
+/config/master.key
+/config/credentials.yml.enc
+
+# Ignore compiled output
+/public/assets
+/public/packs
+/node_modules
+/yarn-error.log
+
+# Ignore database files
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/schema.rb
+/db/structure.sql
+
+# Ignore RubyMine project files
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore system-generated files
+*.swp
+*~
+\#*\#
